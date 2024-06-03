@@ -9,5 +9,5 @@ export const databaseConfig: TypeOrmModuleOptions = {
     logging: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    entities: [__dirname + '/**/*.entity{.ts,.js}'],
+    entities: [__dirname + '/../**/*.entity{.ts,.js}'],// entities: [__dirname + '/**/*.entity{.ts,.js}'],esto varia
 }
