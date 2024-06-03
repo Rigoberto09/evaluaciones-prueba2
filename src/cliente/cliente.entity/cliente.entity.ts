@@ -5,7 +5,6 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 export class Cliente{
     @PrimaryGeneratedColumn()
     customerCode:number;
-
     @Column()
     name:string;
     @Column()
