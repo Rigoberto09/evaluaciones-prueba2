@@ -1,18 +1,23 @@
 import { Direccion } from "src/direcciones/direcciones.entity/direccion.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-
+import { Column, Entity, ObjectIdColumn, OneToMany } from "typeorm";
 @Entity()
-export class Cliente{
-    @PrimaryGeneratedColumn()
-    customerCode:number;
-    @Column()
-    name:string;
-    @Column()
-    adrres:string;
-    @Column()
-    phone:number;
+export class Cliente {
+    @ObjectIdColumn()
+    _id: string;
 
-    @OneToMany(()=>Direccion, direccion=> direccion.cliente)
-    direcciones:Direccion[];
-    
+    @Column({ type: 'bigint' })
+    customerCode: number;
+
+    @Column({ type: 'varchar', length: 255 })
+    name: string;
+
+    @Column({ type: 'varchar', length: 255 })
+    adrres: string;
+
+    @Column({ type: 'bigint' })
+    phone: number;
+
+    @Column()
+    @OneToMany(() => Direccion, direccion => direccion.cliente, { cascade: true })
+    direcciones: Direccion[];
 }
