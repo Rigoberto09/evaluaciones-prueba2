@@ -24,14 +24,6 @@ export class ClienteController implements OnModuleInit{
         return this.clienteService.getCliente()
     }
     
-    // @Post()
-    // async crearNuevoCliente(@Body() data: ClienteInterface) {
-    //     const customerCode = await this.clienteService.contadorGetClientes();
-    //     data.customerCode = Number(customerCode);
-    //     console.log('controller', data);
-
-    //     return this.clienteService.crearCliente(data);
-    // }
     @Post()
     async crearNuevoCliente(@Body() data: Omit<ClienteInterface, 'customerCode'>) {
         const customerCode = await this.clienteService.contadorGetClientes();
@@ -39,6 +31,7 @@ export class ClienteController implements OnModuleInit{
         // console.log('controller', nuevoCliente);
         return this.clienteService.crearCliente(nuevoCliente);
     }
+    
     @Put(':customerCode')
     async actualizarCliente(
         @Param('customerCode', ParseIntPipe) customerCode: number,
