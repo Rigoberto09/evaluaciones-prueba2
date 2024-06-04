@@ -1,5 +1,5 @@
 import { Cliente } from "src/cliente/cliente.entity/cliente.entity";
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Direccion{
@@ -9,6 +9,6 @@ export class Direccion{
     calle:string;
     @Column()
     ciudad:string
-    @ManyToMany(()=>Cliente, cliente=>cliente.direcciones)
+    @ManyToOne(()=>Cliente, cliente=>cliente.direcciones)
     cliente:Cliente;
 }
